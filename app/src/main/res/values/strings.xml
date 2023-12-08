@@ -1,4 +1,17 @@
 <resources>
     <string name="app_name">UniLife</string>
     <string name="title_activity_login">LoginActivity</string>
+
+
+    <string name="hello">Witaj!</string>
+    <string name="create_account">Utwórz nowe konto </string>
+    <string name="welcome_back">Witaj ponownie!</string>
+    <string name="username">Nazwa użytkownika</string>
+    <string name="email">Email</string>
+    <string name="password">Hasło</string>
+    <string name="show_password">Pokaż hasło</string>
+    <string name="hide_password">Ukryj hasło</string>
+    <string name="register">Zarejestruj się</string>
+    <string name="login">Zaloguj się</string>
+    <string name="or">lub</string>
 </resources>
