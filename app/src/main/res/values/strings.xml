@@ -17,4 +17,12 @@
     <string name="bad_credentials_err_msg">Błędne dane logowania</string>
     <string name="login_err_msg">Wystąpił błąd logowania</string>
     <string name="email_taken_err">Podany adres email jest już w użyciu</string>
+
+    <string name="menu">Menu</string>
+    <string name="app_title">My UniLife</string>
+    <string name="return_to_home">Return to home</string>
+    <string name="callendar">Kalendarz</string>
+    <string name="to_do">To do</string>
+    <string name="notes">Notatki</string>
+    <string name="projects">Projekty</string>
 </resources>

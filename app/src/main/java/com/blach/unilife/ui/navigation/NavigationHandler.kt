@@ -15,7 +15,7 @@ import com.blach.unilife.viewmodels.RegistrationViewModel
 fun AppNavigationGraph() {
     val navController = rememberNavController()
     
-    NavHost(navController = navController, startDestination = Routes.LOGIN_SCREEN) {
+    NavHost(navController = navController, startDestination = Routes.HOME_SCREEN) {
         composable(Routes.LOGIN_SCREEN) {
             val loginViewModel: LoginViewModel = hiltViewModel()
             LoginScreen(navController, loginViewModel)
