@@ -1,5 +1,7 @@
-package com.blach.unilife.utils.rules
+package com.blach.unilife.common
 
+import com.blach.unilife.model.mappers.CalendarEventMapper
+import com.blach.unilife.model.repository.CalendarRepository
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import dagger.Module
@@ -22,6 +24,14 @@ object FirebaseModule {
     @Singleton
     fun provideFirebaseFirestore(): FirebaseFirestore {
         return  FirebaseFirestore.getInstance()
+    }
+
+
+
+    @Provides
+    @Singleton
+    fun provideCalendarEventMapper(): CalendarEventMapper {
+        return CalendarEventMapper
     }
 
 

@@ -3,12 +3,12 @@ package com.blach.unilife.viewmodels
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.blach.unilife.data.RegistrationUIEvent
-import com.blach.unilife.data.RegistrationUIState
+import com.blach.unilife.ui.data.RegistrationUIEvent
+import com.blach.unilife.ui.data.RegistrationUIState
 import com.blach.unilife.model.repository.UserRepository
 import com.blach.unilife.ui.navigation.NavigationCommand
 import com.blach.unilife.ui.navigation.Routes
-import com.blach.unilife.utils.rules.Validator
+import com.blach.unilife.ui.utils.Validator
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow

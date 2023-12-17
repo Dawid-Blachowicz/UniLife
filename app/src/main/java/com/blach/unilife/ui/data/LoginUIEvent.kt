@@ -1,4 +1,4 @@
-package com.blach.unilife.data
+package com.blach.unilife.ui.data
 
 sealed class LoginUIEvent{
     data class EmailChanged(val email: String): LoginUIEvent()

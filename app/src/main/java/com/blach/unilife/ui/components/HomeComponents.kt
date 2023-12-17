@@ -36,8 +36,8 @@ import com.blach.unilife.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AppToolBar(
-    toolBarTitle: String,
+fun AppTopBar(
+    topBarTitle: String,
     homeButtonClicked: () -> Unit
 ) {
     TopAppBar(
@@ -48,7 +48,7 @@ fun AppToolBar(
         title = {
             Text(
                 modifier = Modifier.padding(4.dp),
-                text = toolBarTitle,
+                text = topBarTitle,
                 color = Color.White,
                 textAlign = TextAlign.Center,
                 fontSize = 20.sp)
