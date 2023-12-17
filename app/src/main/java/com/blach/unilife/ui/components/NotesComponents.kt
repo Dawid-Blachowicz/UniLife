@@ -4,6 +4,6 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.runtime.Composable
 
 @Composable
-fun MyLazyGrid() {
+fun NoteComponent() {
     //LazyVerticalGrid(columns = 2, content = )
 }
