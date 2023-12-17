@@ -1,4 +1,4 @@
-package com.blach.unilife.data
+package com.blach.unilife.ui.data
 
 sealed class RegistrationUIEvent{
     data class UsernameChanged(val username: String): RegistrationUIEvent()

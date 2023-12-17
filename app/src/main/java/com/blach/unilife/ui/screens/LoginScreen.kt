@@ -20,7 +20,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.blach.unilife.R
-import com.blach.unilife.data.LoginUIEvent
+import com.blach.unilife.ui.data.LoginUIEvent
 import com.blach.unilife.ui.components.ButtonComponent
 import com.blach.unilife.ui.components.ClickableLoginOrRegisterTextComponent
 import com.blach.unilife.ui.components.DividerTextComponent

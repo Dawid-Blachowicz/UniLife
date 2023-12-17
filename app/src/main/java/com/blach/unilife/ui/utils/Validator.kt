@@ -1,8 +1,8 @@
-package com.blach.unilife.utils.rules
+package com.blach.unilife.ui.utils
 
 object Validator {
 
-    fun validateUsername(username: String): ValidationResult{
+    fun validateUsername(username: String): ValidationResult {
         return ValidationResult(
             (username.isNotEmpty()
                     && username.length >= 3
@@ -10,7 +10,7 @@ object Validator {
         )
     }
 
-    fun validateEmail(email: String): ValidationResult{
+    fun validateEmail(email: String): ValidationResult {
         val emailRegex = "^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$".toRegex()
         return ValidationResult(
             (!email.isNullOrEmpty()
@@ -18,7 +18,7 @@ object Validator {
         )
     }
 
-    fun validatePassword(password: String): ValidationResult{
+    fun validatePassword(password: String): ValidationResult {
         val passwordRegex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@\$!%*?&#])[A-Za-z\\d@\$!%*?&#]{8,}$".toRegex()
         return ValidationResult(
             (!password.isNullOrEmpty()

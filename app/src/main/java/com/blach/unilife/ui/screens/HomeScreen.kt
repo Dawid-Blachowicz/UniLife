@@ -16,19 +16,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.blach.unilife.R
-import com.blach.unilife.ui.components.AppToolBar
+import com.blach.unilife.ui.components.AppTopBar
 import com.blach.unilife.ui.components.FeatureTile
+import com.blach.unilife.ui.navigation.Routes
 
 @Composable
-fun HomeScreen() {
-
+fun HomeScreen(navController: NavController) {
     Scaffold (
         topBar = {
-            AppToolBar(
-                toolBarTitle = stringResource(id = R.string.app_title),
+            AppTopBar(
+                topBarTitle = stringResource(id = R.string.app_title),
                 homeButtonClicked = { /*TODO */ })
         },
 
@@ -49,10 +49,10 @@ fun HomeScreen() {
                 ) {
                     FeatureTile(
                         textValue = stringResource(R.string.callendar),
-                        painterResource = painterResource(id = R.drawable.callendar),
-                        onClick = { /*TODO*/ },
-                        modifier = Modifier.weight(1f)
 
+                                painterResource = painterResource(id = R.drawable.callendar),
+                        onClick = { navController.navigate(Routes.CALENDAR_SCREEN) },
+                        modifier = Modifier.weight(1f)
                     )
                     Spacer(modifier = Modifier.width(8.dp))
                     FeatureTile(
@@ -88,10 +88,4 @@ fun HomeScreen() {
             }
         }
     }
-}
-
-@Preview
-@Composable
-fun HomeScreenPreview() {
-    HomeScreen()
 }

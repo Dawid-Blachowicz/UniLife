@@ -3,8 +3,8 @@ package com.blach.unilife.viewmodels
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.blach.unilife.data.LoginUIEvent
-import com.blach.unilife.data.LoginUIState
+import com.blach.unilife.ui.data.LoginUIEvent
+import com.blach.unilife.ui.data.LoginUIState
 import com.blach.unilife.model.repository.UserRepository
 import com.blach.unilife.ui.navigation.NavigationCommand
 import com.blach.unilife.ui.navigation.Routes
