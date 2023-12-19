@@ -31,7 +31,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.blach.unilife.R
-import com.blach.unilife.model.data.Note
+import com.blach.unilife.model.data.notes.Note
 import com.blach.unilife.ui.utils.DateFormatter.getDateInDayMonthYear
 
 @Composable

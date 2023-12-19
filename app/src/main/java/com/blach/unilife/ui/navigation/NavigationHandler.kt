@@ -5,18 +5,18 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.blach.unilife.ui.screens.CalendarScreen
+import com.blach.unilife.ui.screens.calendar.CalendarScreen
 import com.blach.unilife.ui.screens.HomeScreen
-import com.blach.unilife.ui.screens.LoginScreen
-import com.blach.unilife.ui.screens.NewCalendarEventScreen
-import com.blach.unilife.ui.screens.NotesScreen
-import com.blach.unilife.ui.screens.RegisterScreen
-import com.blach.unilife.ui.screens.SingleNoteScreen
-import com.blach.unilife.viewmodels.CalendarViewModel
-import com.blach.unilife.viewmodels.LoginViewModel
-import com.blach.unilife.viewmodels.NewCalendarEventViewModel
-import com.blach.unilife.viewmodels.NotesViewModel
-import com.blach.unilife.viewmodels.RegistrationViewModel
+import com.blach.unilife.ui.screens.auth.LoginScreen
+import com.blach.unilife.ui.screens.calendar.NewCalendarEventScreen
+import com.blach.unilife.ui.screens.notes.NotesScreen
+import com.blach.unilife.ui.screens.auth.RegisterScreen
+import com.blach.unilife.ui.screens.notes.SingleNoteScreen
+import com.blach.unilife.viewmodels.calendar.CalendarViewModel
+import com.blach.unilife.viewmodels.auth.LoginViewModel
+import com.blach.unilife.viewmodels.calendar.NewCalendarEventViewModel
+import com.blach.unilife.viewmodels.notes.NotesViewModel
+import com.blach.unilife.viewmodels.auth.RegistrationViewModel
 
 @Composable
 fun AppNavigationGraph() {

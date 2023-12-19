@@ -1,9 +1,9 @@
 package com.blach.unilife.model.mappers
 
-import com.blach.unilife.model.data.CalendarEvent
-import com.blach.unilife.model.data.CalendarEventType
-import com.blach.unilife.model.data.SimpleCalendarEvent
-import com.blach.unilife.model.data.dto.CalendarEventDTO
+import com.blach.unilife.model.data.calendar.CalendarEvent
+import com.blach.unilife.model.data.calendar.CalendarEventType
+import com.blach.unilife.model.data.calendar.SimpleCalendarEvent
+import com.blach.unilife.model.data.calendar.CalendarEventDTO
 import java.time.LocalDate
 import java.time.LocalTime
 

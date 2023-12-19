@@ -2,8 +2,8 @@ package com.blach.unilife.model.repository
 
 import android.util.Log
 import com.blach.unilife.common.SessionManager
-import com.blach.unilife.model.data.CalendarEvent
-import com.blach.unilife.model.data.dto.CalendarEventDTO
+import com.blach.unilife.model.data.calendar.CalendarEvent
+import com.blach.unilife.model.data.calendar.CalendarEventDTO
 import com.blach.unilife.model.mappers.CalendarEventMapper
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.flow.MutableStateFlow

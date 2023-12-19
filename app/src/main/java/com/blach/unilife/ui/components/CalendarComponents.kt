@@ -55,9 +55,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import com.blach.unilife.R
-import com.blach.unilife.model.data.CalendarEvent
-import com.blach.unilife.model.data.CalendarEventType
-import com.blach.unilife.model.data.SimpleCalendarEvent
+import com.blach.unilife.model.data.calendar.CalendarEvent
+import com.blach.unilife.model.data.calendar.CalendarEventType
+import com.blach.unilife.model.data.calendar.SimpleCalendarEvent
 import com.blach.unilife.ui.utils.DateFormatter.getMonthNameInPolish
 import com.blach.unilife.ui.utils.DateFormatter.getWeekDayNameInPolish
 import java.time.LocalDate

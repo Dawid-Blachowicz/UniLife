@@ -2,8 +2,8 @@ package com.blach.unilife.model.repository
 
 import android.util.Log
 import com.blach.unilife.common.SessionManager
-import com.blach.unilife.model.data.Note
-import com.blach.unilife.model.data.dto.NoteDTO
+import com.blach.unilife.model.data.notes.Note
+import com.blach.unilife.model.data.notes.NoteDTO
 import com.blach.unilife.model.mappers.NoteMapper
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.flow.MutableStateFlow

@@ -1,7 +1,7 @@
 package com.blach.unilife.model.mappers
 
-import com.blach.unilife.model.data.Note
-import com.blach.unilife.model.data.dto.NoteDTO
+import com.blach.unilife.model.data.notes.Note
+import com.blach.unilife.model.data.notes.NoteDTO
 import java.time.LocalDate
 
 object NoteMapper {
