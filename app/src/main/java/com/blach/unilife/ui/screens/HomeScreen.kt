@@ -72,7 +72,9 @@ fun HomeScreen(navController: NavController) {
                     FeatureTile(
                         textValue = stringResource(R.string.notes),
                         painterResource = painterResource(id = R.drawable.notes),
-                        onClick = { /*TODO*/ },
+                        onClick = {
+                                  navController.navigate(Routes.NOTES_SCREEN)
+                        },
                         modifier = Modifier.weight(1f)
                     )
                     Spacer(modifier = Modifier.width(8.dp))

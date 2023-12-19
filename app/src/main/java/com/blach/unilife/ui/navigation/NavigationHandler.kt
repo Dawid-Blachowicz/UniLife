@@ -11,14 +11,17 @@ import com.blach.unilife.ui.screens.LoginScreen
 import com.blach.unilife.ui.screens.NewCalendarEventScreen
 import com.blach.unilife.ui.screens.NotesScreen
 import com.blach.unilife.ui.screens.RegisterScreen
+import com.blach.unilife.ui.screens.SingleNoteScreen
 import com.blach.unilife.viewmodels.CalendarViewModel
 import com.blach.unilife.viewmodels.LoginViewModel
 import com.blach.unilife.viewmodels.NewCalendarEventViewModel
+import com.blach.unilife.viewmodels.NotesViewModel
 import com.blach.unilife.viewmodels.RegistrationViewModel
 
 @Composable
 fun AppNavigationGraph() {
     val navController = rememberNavController()
+    val notesViewModel: NotesViewModel = hiltViewModel()
     
     NavHost(navController = navController, startDestination = Routes.LOGIN_SCREEN) {
         composable(Routes.LOGIN_SCREEN) {
@@ -36,12 +39,15 @@ fun AppNavigationGraph() {
             val calendarViewModel: CalendarViewModel = hiltViewModel()
             CalendarScreen(navController, calendarViewModel)
         }
-        composable(Routes.NOTES_SCREEN) {
-            NotesScreen()
-        }
         composable(Routes.NEW_CALENDAR_EVENT_SCREEN) {
             val newCalendarEventViewModel: NewCalendarEventViewModel = hiltViewModel()
             NewCalendarEventScreen(navController, newCalendarEventViewModel)
+        }
+        composable(Routes.NOTES_SCREEN) {
+            NotesScreen(navController, notesViewModel)
+        }
+        composable(Routes.SINGLE_NOTE_SCREEN) {
+            SingleNoteScreen(navController, notesViewModel)
         }
     }
 

@@ -2,6 +2,8 @@ package com.blach.unilife.ui.utils
 
 import android.content.Context
 import com.blach.unilife.R
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 object DateFormatter {
     fun getMonthNameInPolish(context: Context, monthNumber: Int): String {
@@ -33,5 +35,10 @@ object DateFormatter {
             7 -> context.getString(R.string.sunday)
             else -> context.getString(R.string.unknown)
         }
+    }
+
+    fun getDateInDayMonthYear(date: LocalDate): String{
+        val formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
+        return date.format(formatter)
     }
 }

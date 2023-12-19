@@ -22,6 +22,8 @@ class NotesViewModel @Inject constructor(
 
     private val notes: StateFlow<List<Note>> = repository.notesFlow
 
+    private var currentNodeId: String? = null
+
     init {
         viewModelScope.launch {
             repository.getNotesForUser()
@@ -43,15 +45,44 @@ class NotesViewModel @Inject constructor(
                     content = event.content
                 )
             }
+            is NotesUIEvent.LastEditDateChanged -> {
+                _uiState.value = _uiState.value.copy(
+                    lastEditDate = event.lastEditDate
+                )
+            }
+            is NotesUIEvent.LeadNote -> {
+                currentNodeId = event.note.id
+                _uiState.value = _uiState.value.copy(
+                    title = event.note.title ?: "",
+                    content = event.note.content ?: "",
+                    lastEditDate = event.note.lastEditDate
+
+                )
+            }
+            is NotesUIEvent.OpenDeleteDialogChanged -> {
+                _uiState.value = _uiState.value.copy(
+                    openDeleteDialog = event.openDeleteDialog
+                )
+            }
             is NotesUIEvent.SaveButtonClicked -> {
-                saveNote()
+                if (currentNodeId == null) {
+                    saveNote()
+                } else {
+                    updateNote()
+                }
+                resetNoteState()
+            }
+            is NotesUIEvent.ConfirmDeleteButtonClicked -> {
+                deleteNote()
+                resetNoteState()
             }
         }
     }
 
     private fun getNotesForLoggedUser(notes: List<Note>) {
+        val sortedNotes = notes.sortedByDescending { it.lastEditDate }
         _uiState.value = _uiState.value.copy(
-            notesForLoggedUser = notes
+            notesForLoggedUser = sortedNotes
         )
     }
 
@@ -65,6 +96,26 @@ class NotesViewModel @Inject constructor(
         )
 
         repository.saveNoteForUser(note)
+    }
+
+    private fun updateNote() {
+        val currentState = uiState.value
+        val note = Note(
+            id = currentNodeId!!,
+            title = currentState.title,
+            content = currentState.content,
+            lastEditDate = currentState.lastEditDate
+        )
+        repository.updateNoteForUser(note)
+    }
+
+    private fun deleteNote() {
+        repository.deleteNoteForUser(currentNodeId!!)
+    }
+
+    private fun resetNoteState() {
+        currentNodeId = null
+        _uiState.value = NotesUIState()
     }
 
 }

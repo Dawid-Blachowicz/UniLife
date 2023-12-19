@@ -10,4 +10,5 @@
     <color name="primary">#FF92A3FD</color>
     <color name="event_academic">#FFADD8E6</color>
     <color name="event_personal">#FF90EE90</color>
+    <color name="note">#DFD2F6</color>
 </resources>
