@@ -56,15 +56,15 @@ class NotesRepository @Inject constructor(
         }
     }
 
-    fun updateNoteForUser(updatedNote: Note) {
+    fun updateNoteForUser(note: Note) {
         val userId = sessionManager.currentUserId
-        val dto = mapper.toDTO(updatedNote)
+        val dto = mapper.toDTO(note)
         if(userId != null) {
             firebaseFirestore
                 .collection("users")
                 .document(userId)
                 .collection("notes")
-                .document(updatedNote.id)
+                .document(note.id)
                 .set(dto)
                 .addOnSuccessListener { Log.d("FirestoreUpdate", "Note updated successfully") }
                 .addOnFailureListener{ e -> Log.d("FirestoreUpdate", "Error updating note: ${e.message}")}
