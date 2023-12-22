@@ -8,6 +8,7 @@ import com.blach.unilife.model.mappers.TodoTaskMapper
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import java.time.LocalDate
 import javax.inject.Inject
 
 class TodoRepository @Inject constructor(
@@ -71,7 +72,7 @@ class TodoRepository @Inject constructor(
         }
     }
 
-    fun deleteNoteForUser(taskId: String) {
+    fun deleteTaskForUser(taskId: String) {
         val userId = sessionManager.currentUserId
         if(userId != null) {
             firebaseFirestore
@@ -82,6 +83,14 @@ class TodoRepository @Inject constructor(
                 .delete()
                 .addOnSuccessListener { Log.d("FirestoreDelete", "Todo task deleted successfully") }
                 .addOnFailureListener{ e -> Log.d("FirestoreDelete", "Error deleting todo task: ${e.message}")}
+        }
+    }
+
+    fun deleteDeprecatedTasks() {
+        tasksFlow.value.forEach() { task ->
+            if (task.creationDate.isBefore(LocalDate.now().minusWeeks(2))) {
+                deleteTaskForUser(task.id)
+            }
         }
     }
 }

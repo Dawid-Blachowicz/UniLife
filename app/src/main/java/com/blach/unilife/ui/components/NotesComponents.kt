@@ -77,10 +77,10 @@ fun ActionButton(
         onClick = onClick,
         modifier = Modifier.size(75.dp),
         shape = RoundedCornerShape(45.dp),
-        containerColor = colorResource(id = R.color.purple_200),
+        containerColor = colorResource(id = R.color.purple_500),
         elevation = FloatingActionButtonDefaults.elevation(8.dp)
     ) {
-        Icon(imageVector = icon, contentDescription = null)
+        Icon(imageVector = icon, contentDescription = null, tint = Color.White)
     }
 }
 
