@@ -7,4 +7,5 @@ object Routes {
     const val CALENDAR_SCREEN = "CALENDAR"
     const val NEW_CALENDAR_EVENT_SCREEN = "NEW_CALENDAR_EVENT"
     const val NOTES_SCREEN = "NOTES"
+    const val SINGLE_NOTE_SCREEN = "SINGLE_NOTE"
 }

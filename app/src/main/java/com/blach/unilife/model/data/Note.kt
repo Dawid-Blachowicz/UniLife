@@ -4,7 +4,7 @@ import java.time.LocalDate
 
 data class Note(
     val id: String,
-    val title: String? = null,
-    val content: String? = null,
+    val title: String? = "",
+    val content: String? = "",
     val lastEditDate: LocalDate
 )

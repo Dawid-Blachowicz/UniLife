@@ -122,7 +122,7 @@ class NewCalendarEventViewModel @Inject constructor(
     }
 
     private fun saveEvent(){
-        val currentState = _uiState.value
+        val currentState = uiState.value
         val event = if(currentState.isAcademic) {
             CalendarEvent.Academic(
                 id = "",
