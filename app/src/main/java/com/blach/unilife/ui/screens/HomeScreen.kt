@@ -83,9 +83,11 @@ fun HomeScreen(navController: NavController) {
                     )
                     Spacer(modifier = Modifier.width(8.dp))
                     FeatureTile(
-                        textValue = stringResource(R.string.projects),
+                        textValue = stringResource(R.string.expense_tracker),
                         painterResource = painterResource(id = R.drawable.projects),
-                        onClick = { /*TODO*/ },
+                        onClick = {
+                                  navController.navigate(Routes.EXPENSE_TRACKER_SCREEN)
+                        },
                         modifier = Modifier.weight(1f)
                     )
                 }

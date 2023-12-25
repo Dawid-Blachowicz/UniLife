@@ -11,4 +11,13 @@
     <color name="event_academic">#FFADD8E6</color>
     <color name="event_personal">#FF90EE90</color>
     <color name="note">#DFD2F6</color>
+
+    <color name="color_home_and_bills">#E57373</color>
+    <color name="color_food">#FFD54F</color>
+    <color name="color_health_and_beauty">#BA68C8</color>
+    <color name="color_entertainment_and_travel">#4FC3F7</color>
+    <color name="color_clothes_and_accessories">#AED581</color>
+    <color name="color_education">#FF8A65</color>
+    <color name="color_transport">#90A4AE</color>
+    <color name="color_other">#FF90EE90</color>
 </resources>

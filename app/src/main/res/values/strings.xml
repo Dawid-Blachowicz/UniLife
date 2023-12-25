@@ -24,6 +24,7 @@
     <string name="callendar">Kalendarz</string>
     <string name="to_do">To do</string>
     <string name="notes">Notatki</string>
+    <string name="expense_tracker">Finanse</string>
     <string name="projects">Projekty</string>
 
     <string name="month_january">Styczeń</string>
@@ -82,6 +83,7 @@
     <string name="app_new_event">Nowe wydarzenie</string>
     <string name="event_save">Zapisz</string>
     <string name="note_delete_confirm_question">Czy na pewno chcesz usunąć tę notatkę?</string>
+
     <string name="delete">Usuń</string>
     <string name="cancell">Anuluj</string>
     <string name="add">Dodaj</string>
@@ -90,5 +92,18 @@
     <string name="todo">Todo</string>
     <string name="tab_title_to_do">Do zrobienia</string>
     <string name="tab_title_done">Wykonane</string>
+
+    <string name="category_home_and_bills">Dom i rachunki</string>
+    <string name="category_food">Jedzenie</string>
+    <string name="category_health_and_beauty">Zdrowie i uroda</string>
+    <string name="category_entertainment_and_travel">Rozrywka i podróże</string>
+    <string name="category_clothes_and_accessories">Odzież i akcesoria</string>
+    <string name="category_education">Edukacja</string>
+    <string name="category_transport">Transport</string>
+    <string name="category_other">Inne</string>
+    <string name="amount">Kwota</string>
+    <string name="category">Kategoria</string>
+    <string name="description">Opis</string>
+    <string name="category_all_expenses">Wszystkie wydatki</string>
 
 </resources>
