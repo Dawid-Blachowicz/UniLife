@@ -29,7 +29,9 @@ fun HomeScreen(navController: NavController) {
         topBar = {
             AppTopBar(
                 topBarTitle = stringResource(id = R.string.app_title),
-                homeButtonClicked = { /*TODO */ })
+                homeButtonClicked = {
+                    navController.navigate(Routes.HOME_SCREEN)
+                })
         },
 
     ) { paddingValues ->
@@ -49,16 +51,18 @@ fun HomeScreen(navController: NavController) {
                 ) {
                     FeatureTile(
                         textValue = stringResource(R.string.callendar),
-
-                                painterResource = painterResource(id = R.drawable.callendar),
-                        onClick = { navController.navigate(Routes.CALENDAR_SCREEN) },
+                        painterResource = painterResource(id = R.drawable.callendar),
+                        onClick = {
+                            navController.navigate(Routes.CALENDAR_SCREEN) },
                         modifier = Modifier.weight(1f)
                     )
                     Spacer(modifier = Modifier.width(8.dp))
                     FeatureTile(
                         textValue = stringResource(R.string.to_do),
                         painterResource = painterResource(id = R.drawable.todo),
-                        onClick = { /*TODO*/ },
+                        onClick = {
+                            navController.navigate(Routes.TODO_TABS_SCREEN)
+                        },
                         modifier = Modifier.weight(1f)
 
                     )
@@ -73,7 +77,7 @@ fun HomeScreen(navController: NavController) {
                         textValue = stringResource(R.string.notes),
                         painterResource = painterResource(id = R.drawable.notes),
                         onClick = {
-                                  navController.navigate(Routes.NOTES_SCREEN)
+                            navController.navigate(Routes.NOTES_SCREEN)
                         },
                         modifier = Modifier.weight(1f)
                     )
@@ -85,8 +89,6 @@ fun HomeScreen(navController: NavController) {
                         modifier = Modifier.weight(1f)
                     )
                 }
-
-
             }
         }
     }

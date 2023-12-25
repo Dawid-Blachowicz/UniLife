@@ -84,5 +84,11 @@
     <string name="note_delete_confirm_question">Czy na pewno chcesz usunąć tę notatkę?</string>
     <string name="delete">Usuń</string>
     <string name="cancell">Anuluj</string>
+    <string name="add">Dodaj</string>
+    <string name="save">Zapisz</string>
+    <string name="new_task">Nowe zadanie</string>
+    <string name="todo">Todo</string>
+    <string name="tab_title_to_do">Do zrobienia</string>
+    <string name="tab_title_done">Wykonane</string>
 
 </resources>

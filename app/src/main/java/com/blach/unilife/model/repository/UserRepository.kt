@@ -1,7 +1,7 @@
 package com.blach.unilife.model.repository
 
 import android.util.Log
-import com.blach.unilife.model.data.User
+import com.blach.unilife.model.data.user.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await

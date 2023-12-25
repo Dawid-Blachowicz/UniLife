@@ -2,8 +2,8 @@ package com.blach.unilife.model.repository
 
 import android.util.Log
 import com.blach.unilife.common.SessionManager
-import com.blach.unilife.model.data.Note
-import com.blach.unilife.model.data.dto.NoteDTO
+import com.blach.unilife.model.data.notes.Note
+import com.blach.unilife.model.data.notes.NoteDTO
 import com.blach.unilife.model.mappers.NoteMapper
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -56,15 +56,15 @@ class NotesRepository @Inject constructor(
         }
     }
 
-    fun updateNoteForUser(updatedNote: Note) {
+    fun updateNoteForUser(note: Note) {
         val userId = sessionManager.currentUserId
-        val dto = mapper.toDTO(updatedNote)
+        val dto = mapper.toDTO(note)
         if(userId != null) {
             firebaseFirestore
                 .collection("users")
                 .document(userId)
                 .collection("notes")
-                .document(updatedNote.id)
+                .document(note.id)
                 .set(dto)
                 .addOnSuccessListener { Log.d("FirestoreUpdate", "Note updated successfully") }
                 .addOnFailureListener{ e -> Log.d("FirestoreUpdate", "Error updating note: ${e.message}")}

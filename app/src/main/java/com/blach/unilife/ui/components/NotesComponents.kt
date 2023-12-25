@@ -31,7 +31,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.blach.unilife.R
-import com.blach.unilife.model.data.Note
+import com.blach.unilife.model.data.notes.Note
 import com.blach.unilife.ui.utils.DateFormatter.getDateInDayMonthYear
 
 @Composable
@@ -77,10 +77,10 @@ fun ActionButton(
         onClick = onClick,
         modifier = Modifier.size(75.dp),
         shape = RoundedCornerShape(45.dp),
-        containerColor = colorResource(id = R.color.purple_200),
+        containerColor = colorResource(id = R.color.purple_500),
         elevation = FloatingActionButtonDefaults.elevation(8.dp)
     ) {
-        Icon(imageVector = icon, contentDescription = null)
+        Icon(imageVector = icon, contentDescription = null, tint = Color.White)
     }
 }
 
