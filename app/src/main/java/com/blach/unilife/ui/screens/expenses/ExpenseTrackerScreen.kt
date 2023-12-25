@@ -40,7 +40,7 @@ fun ExpenseTrackerScreen(navController: NavController, viewModel: ExpenseTracker
             ActionButton(
                 icon = Icons.Default.Add,
                 onClick = {
-                   navController.navigate("${Routes.NEW_EXPENSE_SCREEN}/${null}")
+                   navController.navigate("${Routes.NEW_EXPENSE_SCREEN}/add")
                 }
             )
         },

@@ -249,12 +249,10 @@ fun AmountTextField(
 }
 
 fun isAmountValidInput(input: String): Boolean {
-    val parts = input.split(".")
-    return if (parts.size > 1) {
-        parts[1].length <= 2
-    } else {
-        true
-    }
+    if (input.isEmpty()) return true
+
+    val regex = "^\\d*\\.?\\d{0,2}\$".toRegex()
+    return input.matches(regex)
 }
 
 @Composable

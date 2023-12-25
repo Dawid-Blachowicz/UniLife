@@ -1,5 +1,6 @@
 package com.blach.unilife.viewmodels.expenses
 
+import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -25,8 +26,9 @@ class AddOrEditExpenseViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
+            resetExpensesState()
             val expenseId = savedStateHandle.get<String>("expenseId")
-            if(expenseId != null) {
+            if(!expenseId.equals("add")) {
                 currentExpenseId = expenseId
                 loadExpense(expenseId)
             }
@@ -120,5 +122,4 @@ class AddOrEditExpenseViewModel @Inject constructor(
         currentExpenseId = null
         _uiState.value = AddOrEditExpenseUIState()
     }
-
 }
