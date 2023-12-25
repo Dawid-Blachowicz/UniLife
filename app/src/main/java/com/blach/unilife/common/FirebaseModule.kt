@@ -1,9 +1,9 @@
 package com.blach.unilife.common
 
 import com.blach.unilife.model.mappers.CalendarEventMapper
+import com.blach.unilife.model.mappers.ExpenseMapper
 import com.blach.unilife.model.mappers.NoteMapper
 import com.blach.unilife.model.mappers.TodoTaskMapper
-import com.blach.unilife.model.repository.CalendarRepository
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import dagger.Module
@@ -44,5 +44,11 @@ object FirebaseModule {
     @Singleton
     fun provideTodoTaskMapper(): TodoTaskMapper {
         return TodoTaskMapper
+    }
+
+    @Provides
+    @Singleton
+    fun provideExpenseMapper(): ExpenseMapper {
+        return ExpenseMapper
     }
 }
