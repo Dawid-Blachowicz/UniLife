@@ -50,9 +50,10 @@ fun AppNavigationGraph() {
             val calendarViewModel: CalendarViewModel = hiltViewModel()
             CalendarScreen(navController = navController, viewModel = calendarViewModel)
         }
-        composable(Routes.NEW_CALENDAR_EVENT_SCREEN) {
+        composable(Routes.NEW_CALENDAR_EVENT_SCREEN + "/{eventId}") { navBackStackEntry ->
+            val eventId = navBackStackEntry.arguments?.getString("eventId")
             val newCalendarEventViewModel: NewCalendarEventViewModel = hiltViewModel()
-            NewCalendarEventScreen(navController = navController, viewModel = newCalendarEventViewModel)
+            NewCalendarEventScreen(navController = navController, viewModel = newCalendarEventViewModel, eventId = eventId)
         }
         composable(Routes.NOTES_SCREEN) {
             NotesScreen(navController = navController, viewModel = notesViewModel)

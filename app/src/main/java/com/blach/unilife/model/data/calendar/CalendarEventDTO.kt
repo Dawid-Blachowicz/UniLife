@@ -1,7 +1,6 @@
 package com.blach.unilife.model.data.calendar
 
 data class CalendarEventDTO(
-    val id: String = "",
     val title: String = "",
     val startTime: String = "",
     val endTime: String = "",

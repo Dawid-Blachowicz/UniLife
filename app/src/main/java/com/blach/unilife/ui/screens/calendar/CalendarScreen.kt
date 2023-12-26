@@ -1,5 +1,6 @@
 package com.blach.unilife.ui.screens.calendar
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -11,6 +12,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.key
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
@@ -38,8 +40,7 @@ fun CalendarScreen(navController: NavController, viewModel: CalendarViewModel) {
         },
         floatingActionButton = {
             AddNewEventButton(
-                value = stringResource(R.string.add_new_event),
-                onButtonClicked = { navController.navigate(Routes.NEW_CALENDAR_EVENT_SCREEN) }
+                onButtonClicked = { navController.navigate("${Routes.NEW_CALENDAR_EVENT_SCREEN}/add") }
             )
         },
         floatingActionButtonPosition = FabPosition.End
@@ -76,10 +77,15 @@ fun CalendarScreen(navController: NavController, viewModel: CalendarViewModel) {
                     DayEventsDialog(
                         selectedDay = day,
                         onDismiss = { viewModel.onEvent(CalendarUIEvent.DayDialogDismissed) },
-                        events = uiState.eventsForSelectedDay
+                        events = uiState.eventsForSelectedDay,
+                        onDeleteEvent = {
+                            viewModel.onEvent(CalendarUIEvent.EventDeleted(it))
+                        },
+                        onClick = {
+                            navController.navigate("${Routes.NEW_CALENDAR_EVENT_SCREEN}/${it}")
+                        }
                     )
                 }
-
             }
         }
     }

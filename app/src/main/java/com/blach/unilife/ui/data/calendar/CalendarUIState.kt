@@ -9,5 +9,5 @@ data class CalendarUIState(
     val selectedDay: LocalDate? = null,
     val currentMonth: YearMonth = YearMonth.now(),
     val eventsForSelectedDay: List<CalendarEvent> = emptyList(),
-    val simpleEventsForSelectedMonth: List<SimpleCalendarEvent> = emptyList()
+    val simpleEventsForSelectedMonth: List<SimpleCalendarEvent> = emptyList(),
 )

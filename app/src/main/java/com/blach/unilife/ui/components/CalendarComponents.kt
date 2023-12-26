@@ -2,6 +2,7 @@ package com.blach.unilife.ui.components
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -23,9 +24,11 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material.icons.filled.KeyboardArrowLeft
 import androidx.compose.material.icons.filled.KeyboardArrowRight
+import androidx.compose.material.icons.outlined.Delete
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.DropdownMenu
@@ -51,6 +54,7 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
@@ -245,7 +249,6 @@ fun WeekDayNameComponent(
 
 @Composable
 fun AddNewEventButton(
-    value: String,
     onButtonClicked: () -> Unit
 ) {
     FloatingActionButton(
@@ -258,12 +261,8 @@ fun AddNewEventButton(
         shape = RoundedCornerShape(45.dp),
         containerColor = colorResource(id = R.color.purple_500)
     ) {
-        Text(
-            text = value,
-            fontSize = 40.sp,
-            color = Color.White,
-            fontWeight = FontWeight.Normal
-        )
+        Icon(imageVector = Icons.Default.Add, contentDescription = null, tint = Color.White)
+
     }
 }
 
@@ -271,7 +270,9 @@ fun AddNewEventButton(
 fun DayEventsDialog(
     selectedDay: LocalDate,
     onDismiss: () -> Unit,
-    events: List<CalendarEvent>
+    events: List<CalendarEvent>,
+    onDeleteEvent: (String) -> Unit,
+    onClick: (String) -> Unit
 ) {
     Dialog(onDismissRequest = onDismiss) {
         Card(
@@ -298,7 +299,11 @@ fun DayEventsDialog(
                     contentPadding = PaddingValues(8.dp)
                 ) {
                     items(events) { event ->
-                        EventItem(event = event)
+                        EventItem(
+                            event = event,
+                            onDelete = { onDeleteEvent(event.id) },
+                            onClick = { onClick(event.id) }
+                            )
                     }
                 }
             }
@@ -308,7 +313,9 @@ fun DayEventsDialog(
 
 @Composable
 fun EventItem(
-    event: CalendarEvent
+    event: CalendarEvent,
+    onDelete: () -> Unit,
+    onClick: () -> Unit
 ) {
     val backgroundColor = when (event) {
         is CalendarEvent.Academic -> colorResource(id = R.color.event_academic)
@@ -318,33 +325,59 @@ fun EventItem(
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(8.dp),
+            .padding(8.dp)
+            .clickable(onClick = onClick),
         elevation = CardDefaults.cardElevation(4.dp),
         colors = CardDefaults.cardColors(backgroundColor)
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
             Row(
-                modifier = Modifier
-                    .fillMaxWidth(),
-                horizontalArrangement = Arrangement.Start
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.Top
             ) {
-                Text(text = event.title, fontWeight = FontWeight.Bold)
-                Text(text = event.startTime.format(DateTimeFormatter.ofPattern("HH:mm")) + " - " + event.endTime.format(DateTimeFormatter.ofPattern("HH:mm" )), fontWeight = FontWeight.Bold)
+                Column {
+                    Text(
+                        text = event.title,
+                        style = MaterialTheme.typography.headlineMedium,
+                        fontWeight = FontWeight.Bold,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
+                    )
 
-                if(event is CalendarEvent.Academic) {
-                    Text(text = stringResource(R.string.professor, event.professor), fontWeight = FontWeight.Medium)
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth(),
-                        horizontalArrangement = Arrangement.Start
-                    ) {
-                        Text(text = stringResource(R.string.building, event.building), fontWeight = FontWeight.Medium)
-                        Spacer(modifier = Modifier.width(8.dp))
-                        Text(text = stringResource(R.string.room, event.roomNumber), fontWeight = FontWeight.Medium)
-                    }
+                    Text(
+                        text = "${event.startTime.format(DateTimeFormatter.ofPattern("HH:mm"))} - ${event.endTime.format(DateTimeFormatter.ofPattern("HH:mm"))}",
+                        style = MaterialTheme.typography.bodyMedium
+                    )
                 }
 
-                event.description?.let { Text(text = it, fontWeight = FontWeight.Normal) }
+                Spacer(modifier = Modifier.weight(1f))
+                IconButton(onClick = {
+                    Log.d("EventItem", "Deleting event with ID: ${event.id}")
+                    onDelete() }) {
+                    Icon(imageVector = Icons.Outlined.Delete, contentDescription = null)
+                }
+            }
+
+            event.description?.let {
+                Spacer(modifier = Modifier.height(8.dp))
+                Text(
+                    text = it,
+                    style = MaterialTheme.typography.bodySmall
+                )
+            }
+
+            if (event is CalendarEvent.Academic) {
+                Spacer(modifier = Modifier.height(8.dp))
+                Text(
+                    text = stringResource(R.string.professor, event.professor),
+                    style = MaterialTheme.typography.bodyMedium
+                )
+
+                Spacer(modifier = Modifier.height(4.dp))
+                Text(
+                    text = "${stringResource(R.string.building, event.building)} - ${stringResource(R.string.room, event.roomNumber)}",
+                    style = MaterialTheme.typography.bodyMedium
+                )
             }
         }
     }
@@ -390,7 +423,7 @@ fun EventDescriptionTextField(
             focusedLabelColor = colorResource(id = R.color.primary),
             cursorColor = colorResource(id = R.color.primary),
         ),
-        keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next),
+        keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
         singleLine = true,
         maxLines = 5,
         minLines = 4,

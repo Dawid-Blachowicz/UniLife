@@ -89,7 +89,6 @@ class AddOrEditExpenseViewModel @Inject constructor(
                 description = expense.description,
                 date = expense.date,
                 isDataLoaded = true
-
             )
         }
     }
