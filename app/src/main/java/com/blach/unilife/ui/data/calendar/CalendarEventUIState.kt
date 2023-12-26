@@ -14,10 +14,9 @@ data class CalendarEventUIState(
     val building: String = "",
     val date: LocalDate = LocalDate.now(),
     val isAcademic: Boolean = false,
-    val hours: String = "",
-    val minutes: String = "",
     val isStartTimePickerDialogOpen: Boolean = false,
     val isEndTimePickerDialogOpen: Boolean = false,
     val isDatePickerDialogOpen: Boolean = false,
-    val isWeekDayDropDownExpanded: Boolean = false
+    val isWeekDayDropDownExpanded: Boolean = false,
+    val isDataLoaded: Boolean = false
 )

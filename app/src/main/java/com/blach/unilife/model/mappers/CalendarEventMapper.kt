@@ -8,11 +8,11 @@ import java.time.LocalDate
 import java.time.LocalTime
 
 object CalendarEventMapper {
-    fun fromDTO(dto: CalendarEventDTO): CalendarEvent {
+    fun fromDTO(dto: CalendarEventDTO, id: String): CalendarEvent {
         return when(dto.type) {
             CalendarEventType.ACADEMIC.toString() -> {
                 CalendarEvent.Academic(
-                    id = dto.id,
+                    id = id,
                     title = dto.title,
                     startTime = LocalTime.parse(dto.startTime),
                     endTime = LocalTime.parse(dto.endTime),
@@ -25,7 +25,7 @@ object CalendarEventMapper {
             }
             CalendarEventType.PERSONAL.toString() -> {
                 CalendarEvent.Personal(
-                    id = dto.id,
+                    id = id,
                     title = dto.title,
                     startTime = LocalTime.parse(dto.startTime),
                     endTime = LocalTime.parse(dto.endTime),
@@ -40,7 +40,6 @@ object CalendarEventMapper {
 
     fun toDTO(model: CalendarEvent): CalendarEventDTO {
         return CalendarEventDTO(
-            id = model.id,
             title = model.title,
             startTime = model.startTime.toString(),
             endTime = model.endTime.toString(),

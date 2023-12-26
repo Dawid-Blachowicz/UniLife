@@ -105,5 +105,6 @@
     <string name="category">Kategoria</string>
     <string name="description">Opis</string>
     <string name="category_all_expenses">Wszystkie wydatki</string>
+    <string name="title">Tytuł</string>
 
 </resources>

@@ -43,18 +43,20 @@ class CalendarViewModel @Inject constructor(
                 )
                 getEventsForSelectedDay(event.day)
             }
-
             is CalendarUIEvent.DayDialogDismissed -> {
                 _uiState.value = _uiState.value.copy(
                     selectedDay = null
                 )
             }
-
             is CalendarUIEvent.CurrentMonthChanged -> {
                 _uiState.value = _uiState.value.copy(
                     currentMonth = event.month
                 )
                 getSimpleEventsForSelectedMonth(event.month, events.value)
+            }
+            is CalendarUIEvent.EventDeleted -> {
+                deleteEvent(event.eventId)
+                resetCalendarState()
             }
         }
     }
@@ -76,7 +78,6 @@ class CalendarViewModel @Inject constructor(
         )
     }
 
-
     private fun getEventsForSelectedDay(selectedDay: LocalDate) {
         val filteredEvents = events.value
             .filter {event ->
@@ -90,5 +91,13 @@ class CalendarViewModel @Inject constructor(
         _uiState.value = _uiState.value.copy(
             eventsForSelectedDay = filteredEvents
         )
+    }
+
+    private fun deleteEvent(eventId: String) {
+        repository.deleteEventForUser(eventId)
+    }
+
+    private fun resetCalendarState() {
+        _uiState.value = CalendarUIState()
     }
 }

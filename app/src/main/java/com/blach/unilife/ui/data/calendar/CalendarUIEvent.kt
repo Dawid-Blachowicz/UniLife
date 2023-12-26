@@ -6,6 +6,7 @@ import java.time.YearMonth
 sealed class CalendarUIEvent{
     data class DaySelected(val day: LocalDate): CalendarUIEvent()
     data class CurrentMonthChanged(val month: YearMonth): CalendarUIEvent()
+    data class EventDeleted(val eventId: String): CalendarUIEvent()
 
-    object DayDialogDismissed: CalendarUIEvent()
+    data object DayDialogDismissed: CalendarUIEvent()
 }

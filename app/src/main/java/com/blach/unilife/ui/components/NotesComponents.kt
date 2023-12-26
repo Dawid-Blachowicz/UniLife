@@ -1,17 +1,21 @@
 package com.blach.unilife.ui.components
 
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.background
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.FloatingActionButton
@@ -28,6 +32,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.blach.unilife.R
@@ -53,19 +58,22 @@ fun NoteTitleField(
 
 @Composable
 fun NoteContentField(
-    label: String,
     text: String,
     onTextChange: (String) -> Unit
 ) {
-    TextField(
-        value = text,
-        onValueChange = onTextChange,
-        label = { Text(text = label) },
-        modifier = Modifier.fillMaxWidth(),
-        textStyle = TextStyle(fontSize = 16.sp),
-        maxLines = 10,
-        singleLine = false
-    )
+    Box(modifier = Modifier
+        .fillMaxSize()
+        .background(color = colorResource(id = R.color.light_grey))) {
+        BasicTextField(
+            value = text,
+            onValueChange = onTextChange,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(8.dp),
+            textStyle = TextStyle(fontSize = 16.sp),
+            singleLine = false
+        )
+    }
 }
 
 @Composable

@@ -25,6 +25,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.blach.unilife.R
+import com.blach.unilife.ui.components.AddNewEventButton
 import com.blach.unilife.ui.components.AppTopBar
 import com.blach.unilife.ui.components.ButtonComponent
 import com.blach.unilife.ui.components.EventDescriptionTextField
@@ -37,7 +38,7 @@ import com.blach.unilife.ui.navigation.Routes
 import com.blach.unilife.viewmodels.calendar.NewCalendarEventViewModel
 
 @Composable
-fun NewCalendarEventScreen(navController: NavController, viewModel: NewCalendarEventViewModel) {
+fun NewCalendarEventScreen(navController: NavController, viewModel: NewCalendarEventViewModel, eventId: String?) {
 
     Scaffold (
         topBar = {
@@ -47,7 +48,14 @@ fun NewCalendarEventScreen(navController: NavController, viewModel: NewCalendarE
                     navController.navigate(Routes.HOME_SCREEN)
                 })
         },
-
+        floatingActionButton = {
+            AddNewEventButton(
+                onButtonClicked = {
+                    viewModel.onEvent(CalendarEventUIEvent.SaveButtonClicked)
+                    navController.navigate(Routes.CALENDAR_SCREEN)
+                }
+            )
+        },
         ) { paddingValues ->
         Surface(
             modifier = Modifier
@@ -189,12 +197,6 @@ fun NewCalendarEventScreen(navController: NavController, viewModel: NewCalendarE
                     onTextChange = {
                         viewModel.onEvent(CalendarEventUIEvent.DescriptionChanged(it))
                     })
-
-                Spacer(modifier = Modifier.height(30.dp))
-                ButtonComponent(value = stringResource(R.string.event_save), isEnabled = true, onButtonClicked = {
-                    viewModel.onEvent(CalendarEventUIEvent.SaveButtonClicked)
-                    navController.navigate(Routes.CALENDAR_SCREEN)
-                })
             }
         }
     }

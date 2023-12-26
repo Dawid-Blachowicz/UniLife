@@ -70,14 +70,13 @@ fun SingleNoteScreen(
                 val uiState by viewModel.uiState.collectAsState()
 
                 NoteTitleField(
-                    label = "Tytuł",
+                    label = stringResource(R.string.title),
                     text = uiState.title, 
                     onTextChange = {
                         viewModel.onEvent(NotesUIEvent.TitleChanged(it))
                     })
                 Spacer(modifier = Modifier.height(8.dp))
                 NoteContentField(
-                    label = "Treść",
                     text = uiState.content,
                     onTextChange = {
                         viewModel.onEvent(NotesUIEvent.ContentChanged(it))
