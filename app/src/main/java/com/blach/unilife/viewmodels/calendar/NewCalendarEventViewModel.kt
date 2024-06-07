@@ -5,8 +5,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.blach.unilife.model.data.calendar.CalendarEvent
 import com.blach.unilife.model.repository.CalendarRepository
-import com.blach.unilife.ui.data.calendar.CalendarEventUIEvent
-import com.blach.unilife.ui.data.calendar.CalendarEventUIState
+import com.blach.unilife.view.data.calendar.CalendarEventUIEvent
+import com.blach.unilife.view.data.calendar.CalendarEventUIState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

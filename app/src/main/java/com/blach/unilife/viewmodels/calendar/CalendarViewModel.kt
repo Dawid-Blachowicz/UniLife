@@ -5,8 +5,8 @@ import androidx.lifecycle.viewModelScope
 import com.blach.unilife.model.data.calendar.CalendarEvent
 import com.blach.unilife.model.mappers.CalendarEventMapper
 import com.blach.unilife.model.repository.CalendarRepository
-import com.blach.unilife.ui.data.calendar.CalendarUIEvent
-import com.blach.unilife.ui.data.calendar.CalendarUIState
+import com.blach.unilife.view.data.calendar.CalendarUIEvent
+import com.blach.unilife.view.data.calendar.CalendarUIState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -26,7 +26,7 @@ class CalendarViewModel @Inject constructor(
 
     private val events: StateFlow<List<CalendarEvent>> = repository.eventsFlow
 
-    init {
+    init {viewModelScope
         viewModelScope.launch {
             repository.getEventsForUser()
             events.collect {

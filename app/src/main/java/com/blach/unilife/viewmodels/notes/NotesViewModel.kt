@@ -4,8 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.blach.unilife.model.data.notes.Note
 import com.blach.unilife.model.repository.NotesRepository
-import com.blach.unilife.ui.data.notes.NotesUIEvent
-import com.blach.unilife.ui.data.notes.NotesUIState
+import com.blach.unilife.view.data.notes.NotesUIEvent
+import com.blach.unilife.view.data.notes.NotesUIState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -22,7 +22,7 @@ class NotesViewModel @Inject constructor(
 
     private val notes: StateFlow<List<Note>> = repository.notesFlow
 
-    private var currentNodeId: String? = null
+    var currentNodeId: String? = null
 
     init {
         viewModelScope.launch {

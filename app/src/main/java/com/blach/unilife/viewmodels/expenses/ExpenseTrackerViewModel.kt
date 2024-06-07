@@ -11,8 +11,8 @@ import com.blach.unilife.model.data.expenses.ExpenseCategory
 import com.blach.unilife.model.data.expenses.getCategoryColor
 import com.blach.unilife.model.data.expenses.getCategoryDisplayName
 import com.blach.unilife.model.repository.ExpenseRepository
-import com.blach.unilife.ui.data.expenses.ExpenseTrackerUIEvent
-import com.blach.unilife.ui.data.expenses.ExpenseTrackerUIState
+import com.blach.unilife.view.data.expenses.ExpenseTrackerUIEvent
+import com.blach.unilife.view.data.expenses.ExpenseTrackerUIState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -30,7 +30,7 @@ class ExpenseTrackerViewModel @Inject constructor(
 
     private val expenses: StateFlow<List<Expense>> = repository.expensesFlow
 
-    private var currentExpenseId: String? = null
+    var currentExpenseId: String? = null
 
     init {
         viewModelScope.launch {
@@ -168,7 +168,7 @@ class ExpenseTrackerViewModel @Inject constructor(
         repository.deleteExpenseForUser(currentExpenseId!!)
     }
 
-    private fun mapExpenseCategoryToTabNumber(category: ExpenseCategory): Int {
+    fun mapExpenseCategoryToTabNumber(category: ExpenseCategory): Int {
         return when(category) {
             ExpenseCategory.HOME_AND_BILLS -> 1
             ExpenseCategory.FOOD -> 2

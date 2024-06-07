@@ -1,14 +1,13 @@
 package com.blach.unilife.viewmodels.auth
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.blach.unilife.ui.data.auth.RegistrationUIEvent
-import com.blach.unilife.ui.data.auth.RegistrationUIState
+import com.blach.unilife.view.data.auth.RegistrationUIEvent
+import com.blach.unilife.view.data.auth.RegistrationUIState
 import com.blach.unilife.model.repository.UserRepository
-import com.blach.unilife.ui.navigation.NavigationCommand
-import com.blach.unilife.ui.navigation.Routes
-import com.blach.unilife.ui.utils.Validator
+import com.blach.unilife.view.navigation.NavigationCommand
+import com.blach.unilife.view.navigation.Routes
+import com.blach.unilife.view.utils.Validator
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -21,8 +20,6 @@ import javax.inject.Inject
 class RegistrationViewModel @Inject constructor(
     private val userRepository: UserRepository
 ) : ViewModel() {
-    private val TAG = RegistrationViewModel::class.simpleName
-
     private val _registrationUIState = MutableStateFlow(RegistrationUIState())
     val registrationUIState = _registrationUIState.asStateFlow()
 
@@ -87,7 +84,6 @@ class RegistrationViewModel @Inject constructor(
     }
 
     private fun register() {
-        Log.d(TAG, "Inside_register")
         viewModelScope.launch {
             val createSuccess = userRepository.createUser(
                 username = registrationUIState.value.username,
