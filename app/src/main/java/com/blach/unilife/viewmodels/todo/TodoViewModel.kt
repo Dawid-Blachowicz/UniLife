@@ -4,8 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.blach.unilife.model.data.todo.TodoTask
 import com.blach.unilife.model.repository.TodoRepository
-import com.blach.unilife.ui.data.todo.TodoUIEvent
-import com.blach.unilife.ui.data.todo.TodoUIState
+import com.blach.unilife.view.data.todo.TodoUIEvent
+import com.blach.unilife.view.data.todo.TodoUIState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

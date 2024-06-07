@@ -1,13 +1,12 @@
 package com.blach.unilife.viewmodels.auth
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.blach.unilife.ui.data.auth.LoginUIEvent
-import com.blach.unilife.ui.data.auth.LoginUIState
+import com.blach.unilife.view.data.auth.LoginUIEvent
+import com.blach.unilife.view.data.auth.LoginUIState
 import com.blach.unilife.model.repository.UserRepository
-import com.blach.unilife.ui.navigation.NavigationCommand
-import com.blach.unilife.ui.navigation.Routes
+import com.blach.unilife.view.navigation.NavigationCommand
+import com.blach.unilife.view.navigation.Routes
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -52,8 +51,6 @@ class LoginViewModel @Inject constructor(
     }
 
     private fun login() {
-        Log.d(TAG, "Inside_login")
-
         val email = loginUIState.value.email
         val password = loginUIState.value.password
 

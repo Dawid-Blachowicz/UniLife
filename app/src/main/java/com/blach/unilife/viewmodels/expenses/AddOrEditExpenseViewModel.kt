@@ -1,13 +1,12 @@
 package com.blach.unilife.viewmodels.expenses
 
-import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.blach.unilife.model.data.expenses.Expense
 import com.blach.unilife.model.repository.ExpenseRepository
-import com.blach.unilife.ui.data.expenses.AddOrEditExpenseUIEvent
-import com.blach.unilife.ui.data.expenses.AddOrEditExpenseUIState
+import com.blach.unilife.view.data.expenses.AddOrEditExpenseUIEvent
+import com.blach.unilife.view.data.expenses.AddOrEditExpenseUIState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
